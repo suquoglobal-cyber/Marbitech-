@@ -1,0 +1,103 @@
+
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Marbitech Properties & Investment Ltd</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500;600&display=swap');
+      
+      body {
+        font-family: 'Inter', sans-serif;
+        overflow-x: hidden;
+      }
+      
+      h1, h2, h3, .font-display {
+        font-family: 'Playfair Display', serif;
+      }
+
+      .bg-primary { background-color: #001D00; }
+      .text-primary { color: #001D00; }
+      .border-primary { border-color: #001D00; }
+
+      .bg-gold { background-color: #C5A059; }
+      .text-gold { color: #C5A059; }
+      .border-gold { border-color: #C5A059; }
+
+      .gold-gradient {
+        background: linear-gradient(45deg, #8E6D3F, #C5A059, #E9D29F, #C5A059, #8E6D3F);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+      
+      .gold-button {
+        background: linear-gradient(45deg, #8E6D3F, #C5A059);
+        color: #001D00;
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      }
+      
+      .gold-button:hover {
+        background: linear-gradient(45deg, #C5A059, #E9D29F);
+        transform: translateY(-4px) scale(1.02);
+        box-shadow: 0 10px 25px rgba(197, 160, 89, 0.4);
+      }
+
+      .glass-card {
+        background: rgba(255, 255, 255, 0.03);
+        backdrop-filter: blur(12px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      /* Custom scrollbar */
+      ::-webkit-scrollbar {
+        width: 8px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #001D00;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #C5A059;
+        border-radius: 4px;
+      }
+
+      @keyframes fade-up {
+        from { opacity: 0; transform: translateY(30px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+
+      .animate-fade-up {
+        animation: fade-up 0.8s ease-out forwards;
+      }
+
+      @keyframes float {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-15px); }
+      }
+
+      .animate-float {
+        animation: float 5s ease-in-out infinite;
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "react/": "https://esm.sh/react@^19.2.4/",
+    "react": "https://esm.sh/react@^19.2.4",
+    "@google/genai": "https://esm.sh/@google/genai@^1.39.0",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.4/",
+    "firebase/app": "https://esm.sh/firebase@11.2.0/app",
+    "firebase/analytics": "https://esm.sh/firebase@11.2.0/analytics",
+    "firebase/": "https://esm.sh/firebase@^12.9.0/"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+  <body class="bg-gray-50 text-slate-900 selection:bg-gold/30">
+    <div id="root"></div>
+  <script type="module" src="/index.tsx"></script>
+</body>
+</html>
