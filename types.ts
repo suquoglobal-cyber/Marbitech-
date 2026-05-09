@@ -6,7 +6,7 @@ export interface Property {
   price: string;
   numericPrice?: number; // Internal value for AI calculations
   image: string;
-  type: 'Luxury Villa' | 'Modern Apartment' | 'Investment Land' | 'Commercial' | 'Interior Design';
+  type: 'Luxury Villa' | 'Modern Apartment' | 'Investment Land' | 'Commercial' | 'Interior Design' | 'Interior Decoration';
   beds?: number;
   baths?: number;
   sqft?: string;

@@ -64,7 +64,7 @@ const App: React.FC = () => {
           <div className="container mx-auto px-6 lg:px-20 relative z-10">
             <div className="grid grid-cols-2 lg:grid-cols-5 gap-x-6 gap-y-12 sm:gap-12">
               {[
-                { label: 'Market Sectors', value: '5+' },
+                { label: 'Market Sectors', value: '6+' },
                 { label: 'Transparency', value: '100%' },
                 { label: 'Capital Assets', value: '₦5B+' },
                 { label: 'Elite Clients', value: '500+' },

@@ -39,7 +39,7 @@ const Navbar: React.FC = () => {
         className={`fixed w-full z-50 transition-all duration-500 ease-in-out px-4 sm:px-10 ${
           isScrolled 
           ? 'bg-primary/95 py-3 shadow-2xl backdrop-blur-2xl border-b border-gold/10' 
-          : 'bg-transparent py-8 lg:py-10'
+          : 'bg-primary py-5 lg:py-6 border-b border-gold/5'
         }`}
       >
         <div className="container mx-auto flex justify-between items-center">

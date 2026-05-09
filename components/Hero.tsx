@@ -164,6 +164,7 @@ const Hero: React.FC<HeroProps> = ({ onSearch }) => {
                     <option className="bg-primary text-white" value="Modern Apartment">Elite Penthouses</option>
                     <option className="bg-primary text-white" value="Commercial">Corporate Hubs</option>
                     <option className="bg-primary text-white" value="Interior Design">Interior Architecture</option>
+                    <option className="bg-primary text-white" value="Interior Decoration">Elite Decoration</option>
                   </select>
                 </div>
               </div>

@@ -16,6 +16,12 @@ const Services: React.FC = () => {
       features: ['Space Planning', 'Elite Finishes', 'Custom Furnishings']
     },
     {
+      title: 'Interior Decoration',
+      icon: 'fa-paint-roller',
+      desc: 'The art of finishing. We curate fine art, exclusive textiles, and high-end accessories to complete your living masterpiece.',
+      features: ['Art Curation', 'Textile Selection', 'Styling & Setup']
+    },
+    {
       title: 'Strategic Brokerage',
       icon: 'fa-handshake',
       desc: 'Exclusive access to off-market luxury assets in Lagos and Abuja. We connect elite buyers with prestigious properties.',
@@ -38,7 +44,7 @@ const Services: React.FC = () => {
           <div className="w-20 h-1 bg-gold mx-auto"></div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-8 lg:gap-12">
           {services.map((service, i) => (
             <div key={i} className="group p-10 rounded-[3rem] bg-gray-50 border border-gray-100 hover:bg-primary transition-all duration-700 hover:shadow-2xl hover:-translate-y-4">
               <div className="h-20 w-20 bg-gold/10 rounded-2xl flex items-center justify-center mb-8 group-hover:bg-gold transition-colors duration-500">
