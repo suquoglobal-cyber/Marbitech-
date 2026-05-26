@@ -78,6 +78,7 @@ const VisionLab: React.FC = () => {
                 <img 
                   src={image} 
                   alt="AI Generated Concept" 
+                  referrerPolicy="no-referrer"
                   className="w-full h-full object-cover animate-fade-in"
                 />
               ) : (

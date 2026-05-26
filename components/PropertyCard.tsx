@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import { Property } from '../types';
 import { logAnalyticsEvent } from '../services/firebase';
+import { toast } from '../services/toast';
 
 interface PropertyCardProps {
   property: Property;
@@ -10,6 +11,19 @@ interface PropertyCardProps {
 
 const PropertyCard: React.FC<PropertyCardProps> = ({ property, onDetail }) => {
   const [isLiked, setIsLiked] = useState(false);
+
+  // Curated elegant fallbacks for private/access-restricted storage assets
+  const getFallbackImage = (propId: string) => {
+    if (propId === '1') {
+      return "https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&fit=crop&w=1200&q=80"; // Luxury Villa Life Camp
+    }
+    if (propId === '2') {
+      return "https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1200&q=80"; // Prime Land Epe
+    }
+    return "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1200&q=80"; // Elite Real Estate
+  };
+
+  const [imgSrc, setImgSrc] = useState(property.image);
 
   const handleRequestQuote = () => {
     logAnalyticsEvent('request_quote_click', {
@@ -21,7 +35,7 @@ const PropertyCard: React.FC<PropertyCardProps> = ({ property, onDetail }) => {
     if (contactSection) {
       contactSection.scrollIntoView({ behavior: 'smooth' });
       setTimeout(() => {
-        alert(`Your request for a formal quote on ${property.title} has been logged. An investment consultant will contact you shortly.`);
+        toast.success(`Your request for a formal quote on ${property.title} has been logged. An investment consultant will contact you shortly.`);
       }, 1000);
     }
   };
@@ -35,20 +49,43 @@ const PropertyCard: React.FC<PropertyCardProps> = ({ property, onDetail }) => {
       property_title: property.title,
       action: newLiked ? 'like' : 'unlike'
     });
+    
+    if (newLiked) {
+      toast.success(`Added ${property.title} to your curated portfolio watchlist.`);
+    } else {
+      toast.info(`Removed ${property.title} from watchlist.`);
+    }
   };
 
   return (
     <div className="group bg-white rounded-3xl lg:rounded-[2.5rem] overflow-hidden border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-500 flex flex-col h-full border-b-2 hover:border-b-gold">
       <div className="relative h-56 sm:h-64 lg:h-72 overflow-hidden cursor-pointer" onClick={() => onDetail(property)}>
         <img 
-          src={property.image} 
+          src={imgSrc} 
+          onError={() => {
+            const fallback = getFallbackImage(property.id);
+            if (imgSrc !== fallback) {
+              setImgSrc(fallback);
+            }
+          }}
           alt={property.title} 
+          referrerPolicy="no-referrer"
           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
         />
-        <div className="absolute top-4 left-4">
-          <span className="px-3 py-1 bg-primary/90 text-gold text-[8px] font-bold rounded-full backdrop-blur-md border border-gold/30 uppercase tracking-widest">
+        <div className="absolute top-4 left-4 flex flex-wrap gap-2">
+          <span className="px-3 py-1 bg-primary/95 text-gold text-[8px] font-bold rounded-full backdrop-blur-md border border-gold/30 uppercase tracking-widest">
             {property.type}
           </span>
+          {property.tags.includes('Completed Project') && (
+            <span className="px-3 py-1 bg-emerald-950/90 text-emerald-400 text-[8px] font-bold rounded-full backdrop-blur-md border border-emerald-500/20 uppercase tracking-widest">
+              Completed
+            </span>
+          )}
+          {property.tags.includes('Proposed Project') && (
+            <span className="px-3 py-1 bg-amber-950/90 text-amber-500 text-[8px] font-bold rounded-full backdrop-blur-md border border-amber-500/20 uppercase tracking-widest">
+              Proposed
+            </span>
+          )}
         </div>
         <button 
           onClick={handleLike}

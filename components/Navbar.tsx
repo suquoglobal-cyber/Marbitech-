@@ -1,9 +1,11 @@
 
 import React, { useState, useEffect } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 
 const Navbar: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -14,90 +16,86 @@ const Navbar: React.FC = () => {
   }, []);
 
   const navLinks = [
-    { name: 'Home', href: '#' },
-    { name: 'Properties', href: '#properties' },
-    { name: 'Investments', href: '#investments' },
-    { name: 'About', href: '#about' },
+    { name: 'Home', path: '/' },
+    { name: 'Catalog', path: '/catalog' },
+    { name: 'Investments', path: '/investment' },
+    { name: 'Services', path: '/services' },
+    { name: 'About', path: '/about' },
   ];
-
-  const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
-    if (href.startsWith('#')) {
-      e.preventDefault();
-      const element = document.querySelector(href === '#' ? 'body' : href);
-      if (element) {
-        element.scrollIntoView({ behavior: 'smooth' });
-      }
-      setIsMenuOpen(false);
-    }
-  };
 
   const logoUrl = "https://lh3.googleusercontent.com/d/1jn4oChPkYGr1gFcbP781-uHY31kbQ17k";
 
   return (
     <>
       <nav 
-        className={`fixed w-full z-50 transition-all duration-500 ease-in-out px-4 sm:px-10 ${
+        className={`fixed w-full z-50 transition-all duration-750 ease-in-out px-4 sm:px-12 ${
           isScrolled 
-          ? 'bg-primary/95 py-3 shadow-2xl backdrop-blur-2xl border-b border-gold/10' 
-          : 'bg-primary py-5 lg:py-6 border-b border-gold/5'
+          ? 'bg-primary/95 py-3 shadow-[0_15px_30px_rgba(5,26,16,0.2)] backdrop-blur-xl border-b border-gold/15' 
+          : 'bg-primary/80 backdrop-blur-md py-6 border-b border-white/5'
         }`}
       >
         <div className="container mx-auto flex justify-between items-center">
-          <div 
-            className="flex items-center gap-2 sm:gap-3 cursor-pointer group" 
-            onClick={() => window.scrollTo({top: 0, behavior: 'smooth'})}
+          <Link 
+            to="/"
+            className="flex items-center gap-3 cursor-pointer group" 
           >
-            <div className={`relative transition-all duration-500 flex items-center justify-center p-1 ${
-              isScrolled ? 'h-14 w-14 lg:h-16 lg:w-16' : 'h-20 w-20 lg:h-28 lg:w-28'
+            <div className={`relative transition-all duration-750 flex items-center justify-center p-1.5 ${
+              isScrolled ? 'h-11 w-11 lg:h-12 lg:w-12' : 'h-16 w-16 lg:h-20 lg:w-20'
             }`}>
               <img 
                 src={logoUrl} 
                 alt="Marbitech Logo" 
-                className="w-full h-full object-contain transform group-hover:scale-110 transition-transform duration-700 drop-shadow-[0_0_15px_rgba(197,160,89,0.3)]"
+                referrerPolicy="no-referrer"
+                className="w-full h-full object-contain transform group-hover:rotate-12 group-hover:scale-105 transition-all duration-700 filter drop-shadow-[0_0_8px_rgba(212,175,55,0.4)]"
               />
             </div>
             <div className="flex flex-col">
-              <h1 className={`text-gold font-display font-bold leading-none tracking-tight transition-all duration-500 ${
-                isScrolled ? 'text-sm lg:text-base' : 'text-base lg:text-lg'
+              <h1 className={`text-gold font-display font-medium tracking-wide leading-none transition-all duration-750 ${
+                isScrolled ? 'text-xs lg:text-sm' : 'text-sm lg:text-base'
               }`}>
                 MARBITECH
               </h1>
-              <p className={`text-white uppercase tracking-[0.4em] font-black opacity-60 mt-0.5 transition-all duration-500 ${
-                isScrolled ? 'text-[6px]' : 'text-[7px]'
+              <p className={`text-white uppercase tracking-[0.35em] font-light opacity-60 mt-1 transition-all duration-750 ${
+                isScrolled ? 'text-[5px]' : 'text-[6px]'
               }`}>
                 Properties & Investment
               </p>
             </div>
-          </div>
-
+          </Link>
+ 
           {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center space-x-10 xl:space-x-14">
+          <div className="hidden lg:flex items-center space-x-12">
             {navLinks.map((link) => (
-              <a 
+              <Link 
                 key={link.name}
-                href={link.href} 
-                onClick={(e) => handleLinkClick(e, link.href)}
-                className="text-white/70 hover:text-gold transition-all font-bold text-[10px] xl:text-xs uppercase tracking-[0.3em] relative group/link"
+                to={link.path}
+                className="text-white/80 hover:text-gold transition-colors font-medium text-[10.5px] uppercase tracking-[0.25em] relative group/link"
               >
                 {link.name}
-                <span className="absolute -bottom-2 left-0 w-0 h-[2px] bg-gold transition-all duration-500 group-hover/link:w-full"></span>
-              </a>
+                <span className="absolute -bottom-1.5 left-1/2 -translate-x-1/2 w-0 h-[1.5px] bg-gold transition-all duration-500 group-hover/link:w-2/3"></span>
+              </Link>
             ))}
             <button 
-              onClick={() => document.getElementById('footer')?.scrollIntoView({behavior: 'smooth'})}
-              className="gold-button px-10 py-4 rounded-full text-[10px] font-black uppercase tracking-[0.2em] shadow-2xl shadow-gold/10"
+              onClick={() => {
+                document.getElementById('footer')?.scrollIntoView({behavior: 'smooth'});
+                setTimeout(() => {
+                  const input = document.getElementById('consultation-email') || document.getElementById('footer-email');
+                  if (input) input.focus();
+                }, 500);
+              }}
+              className="px-8 py-3 bg-gold text-primary rounded-full text-[10px] font-bold uppercase tracking-[0.2em] transform hover:-translate-y-0.5 hover:shadow-[0_8px_20px_rgba(212,175,55,0.3)] transition-all duration-500"
             >
               Consult Now
             </button>
           </div>
-
+ 
           {/* Mobile Toggle */}
           <button 
-            className="lg:hidden text-gold text-xl focus:outline-none p-3 h-14 w-14 flex items-center justify-center rounded-2xl bg-white/5 border border-white/10 shadow-xl backdrop-blur-xl"
+            className="lg:hidden text-gold text-sm focus:outline-none h-11 w-11 flex items-center justify-center rounded-full bg-white/5 border border-white/10 shadow-lg backdrop-blur-md"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             aria-label="Toggle Menu"
           >
-            <i className={`fas ${isMenuOpen ? 'fa-times' : 'fa-bars-staggered'}`}></i>
+            <i className={`fas ${isMenuOpen ? 'fa-times' : 'fa-bars'}`}></i>
           </button>
         </div>
       </nav>
@@ -108,7 +106,7 @@ const Navbar: React.FC = () => {
       }`}>
         <div className="flex justify-between items-center p-8 border-b border-white/5">
            <div className="flex items-center gap-4">
-             <img src={logoUrl} alt="Logo" className="h-12 w-12 object-contain" />
+             <img src={logoUrl} alt="Logo" referrerPolicy="no-referrer" className="h-12 w-12 object-contain" />
              <span className="text-gold font-display font-bold text-xl tracking-tighter">MARBITECH</span>
            </div>
            <button onClick={() => setIsMenuOpen(false)} className="text-gold h-12 w-12 flex items-center justify-center rounded-full bg-white/5">
@@ -117,15 +115,15 @@ const Navbar: React.FC = () => {
         </div>
         <div className="flex-1 flex flex-col items-center justify-center space-y-10 px-10">
           {navLinks.map((link, i) => (
-            <a 
+            <Link 
               key={link.name}
-              href={link.href} 
-              onClick={(e) => handleLinkClick(e, link.href)}
+              to={link.path}
+              onClick={() => setIsMenuOpen(false)}
               className="text-white text-4xl font-display font-bold hover:text-gold transition-all transform hover:scale-105"
               style={{ transitionDelay: `${i * 100}ms` }}
             >
               {link.name}
-            </a>
+            </Link>
           ))}
           <button 
             onClick={() => {

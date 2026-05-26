@@ -14,6 +14,8 @@ export interface Property {
   description: string;
   features?: string[];
   yearBuilt?: number;
+  additionalImages?: string[];
+  specs?: Record<string, string>;
 }
 
 export interface ChatMessage {

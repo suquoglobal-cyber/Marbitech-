@@ -89,7 +89,15 @@ const Hero: React.FC<HeroProps> = ({ onSearch }) => {
             >
               <img 
                 src={slide.image} 
+                onError={(e) => {
+                  const target = e.currentTarget;
+                  const fallback = "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1920&q=80";
+                  if (target.src !== fallback) {
+                    target.src = fallback;
+                  }
+                }}
                 alt="" 
+                referrerPolicy="no-referrer"
                 className={`w-full h-full object-cover transition-transform duration-[8000ms] ease-linear ${idx === currentTextSlide ? 'scale-110' : 'scale-100'}`}
               />
             </div>
@@ -158,13 +166,13 @@ const Hero: React.FC<HeroProps> = ({ onSearch }) => {
                     onChange={(e) => setPropertyType(e.target.value)}
                     className="bg-transparent border-none text-white focus:ring-0 w-full appearance-none text-sm sm:text-base font-medium cursor-pointer outline-none"
                   >
-                    <option className="bg-primary text-white" value="All Types">Global Collection</option>
-                    <option className="bg-primary text-white" value="Luxury Villa">Private Residences</option>
-                    <option className="bg-primary text-white" value="Investment Land">Wealth Segments</option>
-                    <option className="bg-primary text-white" value="Modern Apartment">Elite Penthouses</option>
-                    <option className="bg-primary text-white" value="Commercial">Corporate Hubs</option>
+                    <option className="bg-primary text-white" value="All Types">Institutional Assets</option>
+                    <option className="bg-primary text-white" value="Luxury Villa">Private Estates</option>
+                    <option className="bg-primary text-white" value="Investment Land">Strategic Reserves</option>
+                    <option className="bg-primary text-white" value="Modern Apartment">Elite Residences</option>
+                    <option className="bg-primary text-white" value="Commercial">Corporate Portfolios</option>
                     <option className="bg-primary text-white" value="Interior Design">Interior Architecture</option>
-                    <option className="bg-primary text-white" value="Interior Decoration">Elite Decoration</option>
+                    <option className="bg-primary text-white" value="Interior Decoration">Bespoke Design</option>
                   </select>
                 </div>
               </div>
