@@ -11,12 +11,12 @@ const Footer: React.FC = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-12 mb-20 lg:mb-32">
           <div className="lg:col-span-5">
             <div className="flex items-center gap-4 mb-8">
-              <img src={logoUrl} alt="Marbitech" referrerPolicy="no-referrer" className="h-12 w-12 lg:h-16 lg:w-16 object-contain" />
-            <div>
-              <h2 className="text-gold font-display text-lg lg:text-xl font-medium tracking-wide leading-none mb-1">MARBITECH</h2>
-              <p className="text-[7px] uppercase tracking-[0.35em] font-light text-white/50">Properties & Investment</p>
+              <img src={logoUrl} alt="Marbitech" referrerPolicy="no-referrer" className="h-16 w-16 lg:h-24 lg:w-24 object-contain filter drop-shadow-[0_0_12px_rgba(159,132,88,0.85)] brightness-110" />
+              <div>
+                <h2 className="text-gold font-display text-xl sm:text-2xl lg:text-3xl font-black tracking-wider leading-none mb-1.5">MARBITECH</h2>
+                <p className="text-[8px] sm:text-[9.5px] uppercase tracking-[0.35em] font-bold opacity-95 mt-1.5">Properties & Investment</p>
+              </div>
             </div>
-          </div>
           <p className="text-white/55 text-xs sm:text-sm leading-relaxed max-w-lg font-light mb-8">
             Redefining the standard of luxury living and capital preservation in Africa since 2008. We are the architects of permanence.
           </p>

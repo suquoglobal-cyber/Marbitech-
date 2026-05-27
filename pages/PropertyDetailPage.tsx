@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useMemo } from 'react';
-import { useParams, useNavigate, Link } from 'react-router-dom';
+import { useParams, useNavigate, Link, useLocation } from 'react-router-dom';
 import { PROPERTIES } from '../constants';
 import { logAnalyticsEvent } from '../services/firebase';
 import { toast } from '../services/toast';
@@ -10,9 +10,22 @@ import { InteractiveMap } from '../components/InteractiveMap';
 const PropertyDetailPage: React.FC = () => {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
+  const location = useLocation();
   
   // Find the exact property from our signature collection
   const property = PROPERTIES.find(p => p.id === id);
+
+  // Scroll to quote form if hash is present
+  useEffect(() => {
+    if (location.hash === '#quote') {
+      setTimeout(() => {
+        const element = document.getElementById('concierge-desk-form');
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+      }, 300);
+    }
+  }, [location, property]);
 
   // Fallback to first property if not found, or redirect
   useEffect(() => {
@@ -373,24 +386,37 @@ const PropertyDetailPage: React.FC = () => {
             </div>
 
             {/* In-depth Editorial Description */}
-            <div className="bg-white rounded-[2rem] p-8 lg:p-10 border border-zinc-200/85 shadow-xs">
-              <h2 className="text-2xl font-display font-medium text-primary mb-6">Architectural Narrative</h2>
-              <div className="text-gray-600 font-light leading-relaxed space-y-6 text-sm sm:text-base">
-                <p>{property.description}</p>
-                <p>
-                  Every square millimeter of this premium development has been crafted using elite materials sourced directly from our master suppliers in Italy and Germany. The floor layouts prioritize high-contrast sightlines, spatial flexibility, and a deep appreciation for geometric balance. Perfect as a primary high-prestige residence or as an appreciating treasury asset holding strategic value.
-                </p>
-              </div>
+            {!property.tags.includes('Completed Project') ? (
+              <div className="bg-white rounded-[2rem] p-8 lg:p-10 border border-zinc-200/85 shadow-xs">
+                <h2 className="text-2xl font-display font-medium text-primary mb-6">Architectural Narrative</h2>
+                <div className="text-gray-650 font-light leading-relaxed space-y-6 text-sm sm:text-base">
+                  <p>{property.description}</p>
+                  <p>
+                    Every square millimeter of this premium development has been crafted using elite materials sourced directly from our master suppliers in Italy and Germany. The floor layouts prioritize high-contrast sightlines, spatial flexibility, and a deep appreciation for geometric balance. Perfect as a primary high-prestige residence or as an appreciating treasury asset holding strategic value.
+                  </p>
+                </div>
 
-              {/* Tag Badges */}
-              <div className="flex flex-wrap gap-2.5 mt-8 pt-6 border-t border-zinc-100">
-                {property.tags.map(tag => (
-                  <span key={tag} className="px-3.5 py-1.5 bg-[#FAF9F6] border border-zinc-200/80 text-primary text-[9px] font-bold uppercase tracking-widest rounded-full">
-                    {tag}
-                  </span>
-                ))}
+                {/* Tag Badges */}
+                <div className="flex flex-wrap gap-2.5 mt-8 pt-6 border-t border-zinc-100">
+                  {property.tags.map(tag => (
+                    <span key={tag} className="px-3.5 py-1.5 bg-[#FAF9F6] border border-zinc-200/80 text-primary text-[9px] font-bold uppercase tracking-widest rounded-full">
+                      {tag}
+                    </span>
+                  ))}
+                </div>
               </div>
-            </div>
+            ) : (
+              <div className="bg-white rounded-[2rem] p-8 lg:p-10 border border-zinc-200/85 shadow-xs">
+                <span className="text-gold font-bold uppercase tracking-[0.3em] text-[8.5px] block mb-4">Development Profile</span>
+                <div className="flex flex-wrap gap-2.5">
+                  {property.tags.map(tag => (
+                    <span key={tag} className="px-3.5 py-1.5 bg-[#FAF9F6] border border-zinc-200/80 text-primary text-[9px] font-bold uppercase tracking-widest rounded-full">
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            )}
 
             {/* Custom Technical Specs Blueprint grid */}
             {property.specs && (
@@ -424,21 +450,29 @@ const PropertyDetailPage: React.FC = () => {
                 <h1 className="text-3xl sm:text-4xl font-display font-medium text-white mb-2 leading-tight">{property.title}</h1>
                 <p className="text-gold/80 italic font-editorial text-2xl mb-8">{property.price}</p>
                 
-                <p className="text-white/60 text-xs flex items-center gap-2 mb-8 border-b border-white/5 pb-6">
-                  <i className="fas fa-map-marker-alt text-gold"></i>
-                  {property.location}
-                </p>
+                {property.location && (
+                  <p className="text-white/60 text-xs flex items-center gap-2 mb-8 border-b border-white/5 pb-6">
+                    <i className="fas fa-map-marker-alt text-gold"></i>
+                    {property.location}
+                  </p>
+                )}
 
                 {/* Spatial Specs Row */}
-                <div className="grid grid-cols-3 gap-4 text-center">
-                  <div className="p-4 bg-white/[0.03] rounded-2xl border border-white/5">
-                    <p className="text-xl font-display font-medium text-gold leading-none mb-1">{property.beds || 'N/A'}</p>
-                    <p className="text-[7.5px] text-white/40 uppercase font-bold tracking-widest">Bedrooms</p>
-                  </div>
-                  <div className="p-4 bg-white/[0.03] rounded-2xl border border-white/5">
-                    <p className="text-xl font-display font-medium text-gold leading-none mb-1">{property.baths || 'N/A'}</p>
-                    <p className="text-[7.5px] text-white/40 uppercase font-bold tracking-widest">Bathrooms</p>
-                  </div>
+                <div className={`grid gap-4 text-center ${
+                  property.beds || property.baths ? 'grid-cols-3' : 'grid-cols-1'
+                }`}>
+                  {property.beds && (
+                    <div className="p-4 bg-white/[0.03] rounded-2xl border border-white/5">
+                      <p className="text-xl font-display font-medium text-gold leading-none mb-1">{property.beds}</p>
+                      <p className="text-[7.5px] text-white/40 uppercase font-bold tracking-widest">Bedrooms</p>
+                    </div>
+                  )}
+                  {property.baths && (
+                    <div className="p-4 bg-white/[0.03] rounded-2xl border border-white/5">
+                      <p className="text-xl font-display font-medium text-gold leading-none mb-1">{property.baths}</p>
+                      <p className="text-[7.5px] text-white/40 uppercase font-bold tracking-widest">Bathrooms</p>
+                    </div>
+                  )}
                   <div className="p-4 bg-white/[0.03] rounded-2xl border border-white/5">
                     <p className="text-xl font-display font-medium text-gold leading-none mb-1">{property.sqft || 'Prime'}</p>
                     <p className="text-[7.5px] text-white/40 uppercase font-bold tracking-widest">Sq. Footage</p>
@@ -465,92 +499,108 @@ const PropertyDetailPage: React.FC = () => {
             )}
 
             {/* Interactive Desk Booking Form */}
-            <div id="concierge-desk-form" className="bg-white rounded-[2.5rem] p-8 lg:p-10 border border-zinc-200/80 shadow-md">
-              <span className="text-gold font-bold uppercase tracking-[0.4em] text-[8.5px] block mb-2">Private Banking Protocol</span>
-              <h3 className="text-xl font-display font-medium text-primary mb-6">Retain Executive Attention</h3>
-              
-              <form onSubmit={handleFormSubmit} className="space-y-5 text-xs">
-                <div>
-                  <label className="block text-gray-400 font-bold uppercase tracking-widest mb-2">FULL NAME *</label>
-                  <input 
-                    type="text" 
-                    name="fullName"
-                    value={formData.fullName}
-                    onChange={handleInputChange}
-                    placeholder="e.g. Chief Aliyu Bello"
-                    className="w-full px-5 py-4 bg-[#FAF9F6] border border-zinc-200 rounded-xl focus:border-gold outline-none transition-colors"
-                    required
-                  />
-                </div>
-
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            {!property.tags.includes('Completed Project') ? (
+              <div id="concierge-desk-form" className="bg-white rounded-[2.5rem] p-8 lg:p-10 border border-zinc-200/80 shadow-md">
+                <span className="text-gold font-bold uppercase tracking-[0.4em] text-[8.5px] block mb-2">Private Banking Protocol</span>
+                <h3 className="text-xl font-display font-medium text-primary mb-6">Retain Executive Attention</h3>
+                
+                <form onSubmit={handleFormSubmit} className="space-y-5 text-xs">
                   <div>
-                    <label className="block text-gray-400 font-bold uppercase tracking-widest mb-2">EMAIL ADDRESS *</label>
+                    <label className="block text-gray-400 font-bold uppercase tracking-widest mb-2">FULL NAME *</label>
                     <input 
-                      type="email" 
-                      name="email"
-                      value={formData.email}
+                      type="text" 
+                      name="fullName"
+                      value={formData.fullName}
                       onChange={handleInputChange}
-                      placeholder="aliyu@bello.com"
+                      placeholder="e.g. Chief Aliyu Bello"
                       className="w-full px-5 py-4 bg-[#FAF9F6] border border-zinc-200 rounded-xl focus:border-gold outline-none transition-colors"
                       required
                     />
                   </div>
+
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                      <label className="block text-gray-400 font-bold uppercase tracking-widest mb-2">EMAIL ADDRESS *</label>
+                      <input 
+                        type="email" 
+                        name="email"
+                        value={formData.email}
+                        onChange={handleInputChange}
+                        placeholder="aliyu@bello.com"
+                        className="w-full px-5 py-4 bg-[#FAF9F6] border border-zinc-200 rounded-xl focus:border-gold outline-none transition-colors"
+                        required
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-gray-400 font-bold uppercase tracking-widest mb-2">DIRECT PHONE *</label>
+                      <input 
+                        type="tel" 
+                        name="phone"
+                        value={formData.phone}
+                        onChange={handleInputChange}
+                        placeholder="+234..."
+                        className="w-full px-5 py-4 bg-[#FAF9F6] border border-zinc-200 rounded-xl focus:border-gold outline-none transition-colors"
+                        required
+                      />
+                    </div>
+                  </div>
+
                   <div>
-                    <label className="block text-gray-400 font-bold uppercase tracking-widest mb-2">DIRECT PHONE *</label>
+                    <label className="block text-gray-400 font-bold uppercase tracking-widest mb-2">PREFERRED TOUR DATE (OPTIONAL)</label>
                     <input 
-                      type="tel" 
-                      name="phone"
-                      value={formData.phone}
+                      type="date" 
+                      name="preferredDate"
+                      value={formData.preferredDate}
                       onChange={handleInputChange}
-                      placeholder="+234..."
                       className="w-full px-5 py-4 bg-[#FAF9F6] border border-zinc-200 rounded-xl focus:border-gold outline-none transition-colors"
-                      required
                     />
                   </div>
-                </div>
 
-                <div>
-                  <label className="block text-gray-400 font-bold uppercase tracking-widest mb-2">PREFERRED TOUR DATE (OPTIONAL)</label>
-                  <input 
-                    type="date" 
-                    name="preferredDate"
-                    value={formData.preferredDate}
-                    onChange={handleInputChange}
-                    className="w-full px-5 py-4 bg-[#FAF9F6] border border-zinc-200 rounded-xl focus:border-gold outline-none transition-colors"
-                  />
-                </div>
+                  <div>
+                    <label className="block text-gray-400 font-bold uppercase tracking-widest mb-2">INSTRUCTION SUMMARY</label>
+                    <textarea 
+                      rows={4}
+                      name="message"
+                      value={formData.message}
+                      onChange={handleInputChange}
+                      className="w-full px-5 py-4 bg-[#FAF9F6] border border-zinc-200 rounded-xl focus:border-gold outline-none transition-colors resize-none leading-relaxed"
+                    />
+                  </div>
 
-                <div>
-                  <label className="block text-gray-400 font-bold uppercase tracking-widest mb-2">INSTRUCTION SUMMARY</label>
-                  <textarea 
-                    rows={4}
-                    name="message"
-                    value={formData.message}
-                    onChange={handleInputChange}
-                    className="w-full px-5 py-4 bg-[#FAF9F6] border border-zinc-200 rounded-xl focus:border-gold outline-none transition-colors resize-none leading-relaxed"
-                  />
+                  <button 
+                    type="submit" 
+                    disabled={isSubmitting}
+                    className="gold-button w-full py-5 rounded-xl font-bold uppercase tracking-widest text-[9.5px] shadow-lg shadow-gold/20 flex items-center justify-center gap-3 transition-opacity disabled:opacity-50"
+                  >
+                    {isSubmitting ? (
+                      <>
+                        <i className="fas fa-spinner animate-spin"></i>
+                        ESTABLISHING CONNECTION...
+                      </>
+                    ) : (
+                      <>
+                        ENGAGE PORTFOLIO MANAGER
+                        <i className="fas fa-paper-plane text-[9px]"></i>
+                      </>
+                    )}
+                  </button>
+                </form>
+              </div>
+            ) : (
+              <div className="bg-white rounded-[2.5rem] p-8 lg:p-10 border border-zinc-200/80 shadow-md text-center">
+                <span className="text-gold font-bold uppercase tracking-[0.4em] text-[8.5px] block mb-3">Institutional Track Record</span>
+                <h3 className="text-xl font-display font-medium text-primary mb-4">Delivered & Commissioned</h3>
+                <p className="text-gray-500 font-light leading-relaxed text-xs">
+                  This portfolio asset represents a fully completed development by Marbitech Properties & Investment. It is preserved here as a hallmark of our architectural and engineering capabilities.
+                </p>
+                <div className="mt-6 pt-6 border-t border-zinc-100 flex justify-center">
+                  <span className="inline-flex items-center gap-2 text-emerald-600 font-bold uppercase tracking-wider text-[9px] bg-emerald-50 px-4 py-2 rounded-full border border-emerald-100">
+                    <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                    Operational Portfolio
+                  </span>
                 </div>
-
-                <button 
-                  type="submit" 
-                  disabled={isSubmitting}
-                  className="gold-button w-full py-5 rounded-xl font-bold uppercase tracking-widest text-[9.5px] shadow-lg shadow-gold/20 flex items-center justify-center gap-3 transition-opacity disabled:opacity-50"
-                >
-                  {isSubmitting ? (
-                    <>
-                      <i className="fas fa-spinner animate-spin"></i>
-                      ESTABLISHING CONNECTION...
-                    </>
-                  ) : (
-                    <>
-                      ENGAGE PORTFOLIO MANAGER
-                      <i className="fas fa-paper-plane text-[9px]"></i>
-                    </>
-                  )}
-                </button>
-              </form>
-            </div>
+              </div>
+            )}
 
           </div>
           

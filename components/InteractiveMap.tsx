@@ -386,7 +386,7 @@ export const InteractiveMap: React.FC<InteractiveMapProps> = ({ onSelectPlotInqu
         
         {/* Status Filters */}
         <div className="space-y-2">
-          <label className="text-[9px] text-[#8E6D3F] font-bold uppercase tracking-widest flex items-center gap-1.5">
+          <label className="text-[9px] text-gold font-bold uppercase tracking-widest flex items-center gap-1.5">
             <SlidersHorizontal className="h-3 w-3" /> Filters by Diagnostic Status
           </label>
           <div className="flex flex-wrap gap-2">
@@ -409,7 +409,7 @@ export const InteractiveMap: React.FC<InteractiveMapProps> = ({ onSelectPlotInqu
 
         {/* Block Filters */}
         <div className="space-y-2">
-          <label className="text-[9px] text-[#8E6D3F] font-bold uppercase tracking-widest flex items-center gap-1.5">
+          <label className="text-[9px] text-gold font-bold uppercase tracking-widest flex items-center gap-1.5">
             <Map className="h-3 w-3" /> Sector Block Ingress
           </label>
           <div className="flex flex-wrap gap-2">
@@ -672,28 +672,28 @@ export const InteractiveMap: React.FC<InteractiveMapProps> = ({ onSelectPlotInqu
                   <div className="space-y-3.5 text-xs font-light">
                     
                     <div className="grid grid-cols-12 gap-1 py-1 text-zinc-600 border-b border-zinc-100 pb-2">
-                      <span className="col-span-5 font-bold uppercase text-[9px] tracking-widest text-[#8E6D3F] flex items-center gap-1">
+                      <span className="col-span-5 font-bold uppercase text-[9px] tracking-widest text-gold flex items-center gap-1">
                         <MapPin className="h-3.5 w-3.5" /> Sector Zone
                       </span>
                       <span className="col-span-7 text-right font-semibold text-primary">{selectedPlot.zone}</span>
                     </div>
 
                     <div className="grid grid-cols-12 gap-1 py-1 text-zinc-600 border-b border-zinc-100 pb-2">
-                      <span className="col-span-5 font-bold uppercase text-[9px] tracking-widest text-[#8E6D3F] flex items-center gap-1">
+                      <span className="col-span-5 font-bold uppercase text-[9px] tracking-widest text-gold flex items-center gap-1">
                         <CheckCircle2 className="h-3.5 w-3.5" /> Total Sizing
                       </span>
                       <span className="col-span-7 text-right font-mono font-bold text-primary">{selectedPlot.size}</span>
                     </div>
 
                     <div className="grid grid-cols-12 gap-1 py-1 text-zinc-600 border-b border-zinc-100 pb-2">
-                      <span className="col-span-5 font-bold uppercase text-[9px] tracking-widest text-[#8E6D3F] flex items-center gap-1">
+                      <span className="col-span-5 font-bold uppercase text-[9px] tracking-widest text-gold flex items-center gap-1">
                         <Grid className="h-3.5 w-3.5" /> Dimensions
                       </span>
                       <span className="col-span-7 text-right font-mono text-zinc-500">{selectedPlot.dimensions}</span>
                     </div>
 
                     <div className="grid grid-cols-12 gap-1 py-1 text-zinc-600 border-b border-zinc-100 pb-2">
-                      <span className="col-span-5 font-bold uppercase text-[9px] tracking-widest text-[#8E6D3F]">
+                      <span className="col-span-5 font-bold uppercase text-[9px] tracking-widest text-gold">
                         Valuation Index
                       </span>
                       <span className="col-span-7 text-right font-editorial italic text-lg font-bold text-primary">
@@ -714,7 +714,7 @@ export const InteractiveMap: React.FC<InteractiveMapProps> = ({ onSelectPlotInqu
                       <span className="block font-bold uppercase text-[9px] tracking-widest text-zinc-400 mb-1.5 flex items-center gap-1">
                         <Sparkles className="h-3.5 w-3.5 text-gold" /> Recommended Structure
                       </span>
-                      <p className="text-[#8E6D3F] text-xs font-medium font-sans">
+                      <p className="text-gold text-xs font-medium font-sans">
                         {selectedPlot.recommendedUse}
                       </p>
                     </div>

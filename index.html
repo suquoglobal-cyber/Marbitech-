@@ -6,6 +6,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Marbitech Properties & Investment Ltd</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              gold: {
+                DEFAULT: '#9F8458', // Authentic Marbitech logo brown/bronze
+                light: '#CAA44C',   // Elegant lighter logo gold
+                dark: '#6D5837',    // Deep prestige brand brown
+              },
+              primary: {
+                DEFAULT: '#051A10',
+              }
+            }
+          }
+        }
+      }
+    </script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
     <style>
       @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
@@ -22,28 +40,28 @@
         font-weight: 500;
         letter-spacing: -0.03em;
       }
-
+  
       .font-editorial {
         font-family: 'Cormorant Garamond', serif;
       }
-
+  
       .bg-primary { background-color: #051A10; }
       .text-primary { color: #051A10; }
       .border-primary { border-color: #051A10; }
-
-      .bg-gold { background-color: #D4AF37; }
-      .text-gold { color: #D4AF37; }
-      .border-gold { border-color: #D4AF37; }
-
+  
+      .bg-gold { background-color: #9F8458; }
+      .text-gold { color: #9F8458; }
+      .border-gold { border-color: #9F8458; }
+  
       .gold-gradient {
-        background: linear-gradient(135deg, #E0B83C, #F4D35E, #C29B27);
+        background: linear-gradient(135deg, #CAA44C, #E9D29F, #9F8458);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
       }
       
       .gold-button {
-        background: linear-gradient(135deg, #C29B27, #E0B83C);
-        color: #051A10;
+        background: linear-gradient(135deg, #6D5837, #9F8458);
+        color: #FAF9F6;
         transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
         letter-spacing: 0.15em;
         text-transform: uppercase;
@@ -51,9 +69,10 @@
       }
       
       .gold-button:hover {
-        background: linear-gradient(135deg, #E0B83C, #FAF0D7);
+        background: linear-gradient(135deg, #CAA44C, #F3DD82);
+        color: #051A10;
         transform: translateY(-2px);
-        box-shadow: 0 12px 30px rgba(194, 155, 39, 0.25);
+        box-shadow: 0 12px 30px rgba(159, 132, 88, 0.25);
       }
 
       .glass-card {
@@ -65,7 +84,7 @@
       .glass-dark {
         background: rgba(5, 26, 16, 0.85);
         backdrop-filter: blur(16px);
-        border: 1px solid rgba(212, 175, 55, 0.15);
+        border: 1px solid rgba(159, 132, 88, 0.15);
       }
 
       /* Custom scrollbar */
@@ -77,7 +96,7 @@
         background: #051A10;
       }
       ::-webkit-scrollbar-thumb {
-        background: #D4AF37;
+        background: #9F8458;
         border-radius: 3px;
       }
 

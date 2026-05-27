@@ -6,7 +6,7 @@ import { toast } from '../services/toast';
 
 interface PropertyCardProps {
   property: Property;
-  onDetail: (property: Property) => void;
+  onDetail: (property: Property, hash?: string) => void;
 }
 
 const PropertyCard: React.FC<PropertyCardProps> = ({ property, onDetail }) => {
@@ -25,19 +25,15 @@ const PropertyCard: React.FC<PropertyCardProps> = ({ property, onDetail }) => {
 
   const [imgSrc, setImgSrc] = useState(property.image);
 
-  const handleRequestQuote = () => {
+  const handleRequestQuote = (e: React.MouseEvent) => {
+    e.stopPropagation();
     logAnalyticsEvent('request_quote_click', {
       property_id: property.id,
       property_title: property.title
     });
     
-    const contactSection = document.getElementById('footer');
-    if (contactSection) {
-      contactSection.scrollIntoView({ behavior: 'smooth' });
-      setTimeout(() => {
-        toast.success(`Your request for a formal quote on ${property.title} has been logged. An investment consultant will contact you shortly.`);
-      }, 1000);
-    }
+    // Redirect to the particular property details page and target the Quote form
+    onDetail(property, '#quote');
   };
 
   const handleLike = (e: React.MouseEvent) => {
@@ -98,26 +94,30 @@ const PropertyCard: React.FC<PropertyCardProps> = ({ property, onDetail }) => {
       <div className="p-6 lg:p-8 flex flex-col flex-1">
         <div className="mb-4">
           <h3 className="text-xl lg:text-2xl font-display font-bold text-primary group-hover:text-gold transition-colors mb-2 cursor-pointer" onClick={() => onDetail(property)}>{property.title}</h3>
-          <p className="text-gray-500 text-xs flex items-center gap-2">
-            <i className="fas fa-map-marker-alt text-gold/70"></i>
-            {property.location}
-          </p>
+          {property.location && (
+            <p className="text-gray-500 text-xs flex items-center gap-2">
+              <i className="fas fa-map-marker-alt text-gold/70"></i>
+              {property.location}
+            </p>
+          )}
         </div>
         
-        <div className="flex gap-4 lg:gap-6 mb-6 py-4 border-y border-gray-50 overflow-x-auto no-scrollbar">
-          {property.beds && (
-            <div className="flex items-center gap-2 text-[9px] text-gray-500 font-bold uppercase tracking-wider shrink-0">
-              <i className="fas fa-bed text-gold"></i>
-              <span>{property.beds} Beds</span>
-            </div>
-          )}
-          {property.baths && (
-            <div className="flex items-center gap-2 text-[9px] text-gray-500 font-bold uppercase tracking-wider shrink-0">
-              <i className="fas fa-bath text-gold"></i>
-              <span>{property.baths} Baths</span>
-            </div>
-          )}
-        </div>
+        {(property.beds || property.baths) && (
+          <div className="flex gap-4 lg:gap-6 mb-6 py-4 border-y border-gray-50 overflow-x-auto no-scrollbar">
+            {property.beds && (
+              <div className="flex items-center gap-2 text-[9px] text-gray-500 font-bold uppercase tracking-wider shrink-0">
+                <i className="fas fa-bed text-gold"></i>
+                <span>{property.beds} Beds</span>
+              </div>
+            )}
+            {property.baths && (
+              <div className="flex items-center gap-2 text-[9px] text-gray-500 font-bold uppercase tracking-wider shrink-0">
+                <i className="fas fa-bath text-gold"></i>
+                <span>{property.baths} Baths</span>
+              </div>
+            )}
+          </div>
+        )}
         
         <div className="mt-auto space-y-4">
           <div className="flex items-center justify-between">
@@ -132,12 +132,22 @@ const PropertyCard: React.FC<PropertyCardProps> = ({ property, onDetail }) => {
               <i className="fas fa-arrow-right text-[8px] group-hover/btn:translate-x-1 transition-transform"></i>
             </button>
           </div>
-          <button 
-            onClick={handleRequestQuote}
-            className="gold-button w-full py-3.5 rounded-xl font-bold uppercase tracking-widest text-[9px] shadow-lg shadow-gold/10"
-          >
-            Private Quote
-          </button>
+          {property.tags.includes('Completed Project') ? (
+            <button 
+              onClick={() => onDetail(property)}
+              className="gold-button w-full py-3.5 rounded-xl font-bold uppercase tracking-widest text-[9px] shadow-lg shadow-gold/10 flex items-center justify-center gap-2 group/btn"
+            >
+              <span>View More</span>
+              <i className="fas fa-arrow-right text-[8px] group-hover/btn:translate-x-1 transition-transform animate-pulse"></i>
+            </button>
+          ) : (
+            <button 
+              onClick={handleRequestQuote}
+              className="gold-button w-full py-3.5 rounded-xl font-bold uppercase tracking-widest text-[9px] shadow-lg shadow-gold/10"
+            >
+              Private Quote
+            </button>
+          )}
         </div>
       </div>
     </div>

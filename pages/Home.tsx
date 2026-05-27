@@ -20,13 +20,13 @@ const Home: React.FC = () => {
     navigate(`/catalog?location=${location}&type=${type}`);
   };
 
-  const handlePropertySelect = (property: Property) => {
+  const handlePropertySelect = (property: Property, hash?: string) => {
     logAnalyticsEvent('view_property_home', { 
       property_id: property.id, 
       property_title: property.title,
       property_type: property.type 
     });
-    navigate(`/catalog/${property.id}`);
+    navigate(`/catalog/${property.id}${hash || ''}`);
   };
 
   return (

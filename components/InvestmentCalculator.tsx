@@ -371,9 +371,9 @@ const InvestmentCalculator: React.FC = () => {
               {/* Dynamic Investment Report Download PDF Button Trigger */}
               <button
                 onClick={downloadReport}
-                className="bg-white/5 hover:bg-white/15 text-white hover:text-gold border border-white/10 hover:border-gold/30 p-6 rounded-[2.5rem] flex items-center justify-between gap-4 transition-all duration-300 group cursor-pointer animate-fade-in"
+                className="bg-white/5 hover:bg-white/15 text-white hover:text-gold border border-white/10 hover:border-gold/30 p-6 rounded-[2.5rem] flex items-center justify-between gap-4 transition-all duration-300 group cursor-pointer animate-fade-in w-full text-left"
               >
-                <div className="flex items-center gap-4 text-left">
+                <div className="flex items-center gap-4">
                   <div className="h-12 w-12 rounded-2xl bg-gold/10 text-gold flex items-center justify-center group-hover:bg-gold/20 transition-all">
                     <i className="fas fa-file-pdf text-lg"></i>
                   </div>

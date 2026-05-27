@@ -168,7 +168,7 @@ const Hero: React.FC<HeroProps> = ({ onSearch }) => {
                   >
                     <option className="bg-primary text-white" value="All Types">Institutional Assets</option>
                     <option className="bg-primary text-white" value="Luxury Villa">Private Estates</option>
-                    <option className="bg-primary text-white" value="Investment Land">Strategic Reserves</option>
+                    <option className="bg-primary text-white" value="Commercial and Residential">Commercial & Residential</option>
                     <option className="bg-primary text-white" value="Modern Apartment">Elite Residences</option>
                     <option className="bg-primary text-white" value="Commercial">Corporate Portfolios</option>
                     <option className="bg-primary text-white" value="Interior Design">Interior Architecture</option>

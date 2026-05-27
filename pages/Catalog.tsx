@@ -6,31 +6,27 @@ import { Property } from '../types';
 import { logAnalyticsEvent } from '../services/firebase';
 
 const COLUMN_1_IMAGES = [
-  'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=400&q=80',
-  'https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&fit=crop&w=400&q=80',
-  'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=400&q=80',
-  'https://images.unsplash.com/photo-1618219908412-a29a1bb7b86e?auto=format&fit=crop&w=400&q=80',
+  'https://lh3.googleusercontent.com/d/1tI2sKiRxEKVILMJZwOrd8lPVSjoiz49H',
+  'https://lh3.googleusercontent.com/d/1QAstywyXbPUCFssk0OcV5NaZp_gTn4Ez',
+  'https://lh3.googleusercontent.com/d/1Mku7SB3ABojuk7Y225v4d_PLZRcLw4TP',
 ];
 
 const COLUMN_2_IMAGES = [
-  'https://images.unsplash.com/photo-1616594039964-ae9021a400a0?auto=format&fit=crop&w=400&q=80',
-  'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=400&q=80',
-  'https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=400&q=80',
-  'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=400&q=80',
+  'https://lh3.googleusercontent.com/d/1aOzx_ZADleNZYEDi8IDK_ung6cuiDMWP',
+  'https://lh3.googleusercontent.com/d/1GvCYsuNV9YGUTofranpxfVyrcBgqWOoq',
+  'https://lh3.googleusercontent.com/d/1fOgBtwv3ycy0LtgP7rj19iCb4Dm8h0OX',
 ];
 
 const COLUMN_3_IMAGES = [
-  'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=400&q=80',
-  'https://images.unsplash.com/photo-1580587771525-78b9dba3b914?auto=format&fit=crop&w=400&q=80',
-  'https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=400&q=80',
-  'https://images.unsplash.com/photo-1600566753376-12c8ab7fb75b?auto=format&fit=crop&w=400&q=80',
+  'https://lh3.googleusercontent.com/d/1DckwdC3E9MjtyrcTyYkjvoOC2BvS7sCt',
+  'https://lh3.googleusercontent.com/d/1qJ4fMSghM8nonYc0FampT7zdFGK1isrZ',
+  'https://lh3.googleusercontent.com/d/15QsT0wRaZ2P8CdrmduErq_LfhWUpu3D_',
 ];
 
 const COLUMN_4_IMAGES = [
-  'https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?auto=format&fit=crop&w=400&q=80',
-  'https://images.unsplash.com/photo-1617806118233-18e1db207f62?auto=format&fit=crop&w=400&q=80',
-  'https://images.unsplash.com/photo-1504624244675-27a3ffd0c8f1?auto=format&fit=crop&w=400&q=80',
-  'https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=400&q=80',
+  'https://lh3.googleusercontent.com/d/1W1IdaAgc0FZZ0u4PzfsGRr4nKeVuftCq',
+  'https://lh3.googleusercontent.com/d/1JT-89cjBHUD_8nX8CpDolAzysVU-0EkW',
+  'https://lh3.googleusercontent.com/d/1tI2sKiRxEKVILMJZwOrd8lPVSjoiz49H',
 ];
 
 // Duplicated arrays to form perfect gapless loops
@@ -61,18 +57,18 @@ const Catalog: React.FC = () => {
   const filteredProperties = useMemo(() => {
     return PROPERTIES.filter(p => {
       const matchType = searchFilter.type === 'All Types' || p.type === searchFilter.type;
-      const matchLoc = !searchFilter.location || p.location.toLowerCase().includes(searchFilter.location.toLowerCase());
+      const matchLoc = !searchFilter.location || (p.location && p.location.toLowerCase().includes(searchFilter.location.toLowerCase()));
       return matchType && matchLoc;
     });
   }, [searchFilter]);
 
-  const handlePropertySelect = (property: Property) => {
+  const handlePropertySelect = (property: Property, hash?: string) => {
     logAnalyticsEvent('view_property', { 
       property_id: property.id, 
       property_title: property.title,
       property_type: property.type 
     });
-    navigate(`/catalog/${property.id}`);
+    navigate(`/catalog/${property.id}${hash || ''}`);
   };
 
   return (
