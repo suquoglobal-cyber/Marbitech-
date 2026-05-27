@@ -1,7 +1,6 @@
 
 import React from 'react';
 import Services from '../components/Services';
-import VisionLab from '../components/VisionLab';
 
 const ServicesPage: React.FC = () => {
   return (
@@ -11,17 +10,15 @@ const ServicesPage: React.FC = () => {
         <div className="container mx-auto px-6 relative z-10">
           <span className="text-gold font-bold uppercase tracking-[0.4em] text-[9px] mb-4 block animate-fade-in">Corporate Solutions</span>
           <h1 className="text-4xl lg:text-7xl font-display font-medium tracking-tight mb-6 leading-none">
-            Integrated <span className="font-editorial italic text-3xl sm:text-5xl lg:text-7xl text-gold">Services & Vision Lab</span>
+            Integrated <span className="font-editorial italic text-3xl sm:text-5xl lg:text-7xl text-gold">Real Estate Services</span>
           </h1>
           <p className="text-white/60 max-w-2xl mx-auto font-light leading-relaxed text-xs sm:text-base">
-            From premier project development to high-stability asset oversight, we integrate advanced technology and professional integrity.
+            From premier project development to high-stability asset oversight, we integrate luxury craftsmanship and professional integrity.
           </p>
         </div>
       </section>
 
       <Services />
-      
-      <VisionLab />
       
       <section className="py-28 bg-[#FAF9F6] border-t border-zinc-200/50">
         <div className="container mx-auto px-6 lg:px-24 text-left">

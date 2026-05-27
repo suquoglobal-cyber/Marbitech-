@@ -79,8 +79,8 @@ const Home: React.FC = () => {
             onClick={() => navigate('/services')}
             className="gold-button inline-flex items-center gap-3 px-14 py-5 rounded-full font-bold uppercase tracking-widest text-[10px] shadow-lg"
           >
-            Explore Services & AI VisionLab
-            <i className="fas fa-magic text-[10.5px] ml-1"></i>
+            Explore Integrated Services
+            <i className="fas fa-chevron-right text-[8px] ml-1"></i>
           </button>
         </div>
       </div>

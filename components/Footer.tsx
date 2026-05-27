@@ -1,6 +1,7 @@
 
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { generateCompanyProfilePDF } from '../services/pdfGenerator';
 
 const Footer: React.FC = () => {
   const logoUrl = "https://lh3.googleusercontent.com/d/1jn4oChPkYGr1gFcbP781-uHY31kbQ17k";
@@ -33,9 +34,18 @@ const Footer: React.FC = () => {
           <h5 className="text-gold text-[9px] uppercase tracking-[0.3em] font-semibold mb-8">Asset Navigator</h5>
           <ul className="space-y-4 text-xs font-light text-white/50">
             <li><Link to="/catalog" className="hover:text-gold hover:underline transition-all">Signature Portfolio</Link></li>
-            <li><Link to="/services" className="hover:text-gold hover:underline transition-all">Services & Vision Lab</Link></li>
+            <li><Link to="/services" className="hover:text-gold hover:underline transition-all">Integrated Services</Link></li>
             <li><Link to="/investment" className="hover:text-gold hover:underline transition-all">Wealth & ROI Projections</Link></li>
             <li><Link to="/about" className="hover:text-gold hover:underline transition-all">About Our Legacy</Link></li>
+            <li>
+              <button 
+                onClick={generateCompanyProfilePDF}
+                className="hover:text-gold hover:underline transition-all text-left flex items-center gap-1.5 focus:outline-none"
+              >
+                <i className="fas fa-file-pdf text-[10px]"></i>
+                Download Profile PDF
+              </button>
+            </li>
           </ul>
         </div>
         
@@ -46,6 +56,13 @@ const Footer: React.FC = () => {
                <p className="text-[8px] uppercase tracking-widest text-white/30 mb-2 font-bold">Official Inquiries</p>
                <p className="text-xs sm:text-sm font-light text-white/70 group-hover:text-gold transition-colors font-mono">marbitechproperties@gmail.com</p>
             </a>
+            <button 
+              onClick={generateCompanyProfilePDF}
+              className="mt-2 px-5 py-3 bg-white/5 hover:bg-gold hover:text-primary transition-all text-[9px] font-bold uppercase tracking-widest rounded-xl border border-white/5 hover:border-gold flex items-center gap-2 w-full sm:w-auto justify-center sm:justify-start"
+            >
+              <i className="fas fa-file-pdf text-[10.5px]"></i>
+              Company Profile PDF
+            </button>
           </div>
         </div>
       </div>

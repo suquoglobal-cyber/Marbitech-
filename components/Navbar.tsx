@@ -1,6 +1,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { generateCompanyProfilePDF } from '../services/pdfGenerator';
 
 const Navbar: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -76,6 +77,13 @@ const Navbar: React.FC = () => {
               </Link>
             ))}
             <button 
+              onClick={generateCompanyProfilePDF}
+              className="px-6 py-2.5 bg-transparent border border-gold text-gold hover:bg-gold hover:text-primary rounded-full text-[10px] font-bold uppercase tracking-[0.2em] transform hover:-translate-y-0.5 transition-all duration-500 flex items-center gap-2 group/pdf"
+            >
+              <i className="fas fa-file-pdf group-hover/pdf:scale-110 transition-all duration-300"></i>
+              Profile PDF
+            </button>
+            <button 
               onClick={() => {
                 document.getElementById('footer')?.scrollIntoView({behavior: 'smooth'});
                 setTimeout(() => {
@@ -136,6 +144,16 @@ const Navbar: React.FC = () => {
             className="gold-button px-10 py-6 rounded-3xl font-black text-base uppercase tracking-[0.3em] w-full max-w-sm shadow-[0_25px_50px_-12px_rgba(197,160,89,0.3)]"
           >
             Contact Experts
+          </button>
+          <button 
+            onClick={() => {
+              generateCompanyProfilePDF();
+              setIsMenuOpen(false);
+            }}
+            className="px-10 py-5 bg-transparent border-2 border-gold text-gold hover:bg-gold hover:text-primary rounded-3xl font-black text-sm uppercase tracking-[0.3em] w-full max-w-sm flex items-center justify-center gap-2.5 transition-all"
+          >
+            <i className="fas fa-file-pdf"></i>
+            Company Profile PDF
           </button>
         </div>
         <div className="p-12 text-center opacity-40 text-[9px] uppercase tracking-[0.5em] text-white font-bold">

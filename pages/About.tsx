@@ -1,4 +1,5 @@
 import React from 'react';
+import { generateCompanyProfilePDF } from '../services/pdfGenerator';
 
 const About: React.FC = () => {
   return (
@@ -22,6 +23,20 @@ const About: React.FC = () => {
                   <p>
                     With over 15 years of industry leadership, we have successfully delivered landmark projects across Lagos and Abuja, setting new benchmarks for quality, investment security, and reliability.
                   </p>
+                </div>
+
+                <div className="mt-12 p-6 rounded-3xl bg-white border border-zinc-200/80 shadow-[0_10px_25px_rgba(0,0,0,0.01)] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
+                  <div className="space-y-1">
+                    <h4 className="text-sm font-bold uppercase tracking-widest text-gold text-left">Verify Our Corporate Ledger</h4>
+                    <p className="text-xs text-gray-400 font-light text-left">Download our comprehensive 4-page corporate profile detailing operations, legal structure, and land indices.</p>
+                  </div>
+                  <button 
+                    onClick={generateCompanyProfilePDF}
+                    className="gold-button px-8 py-4.5 rounded-2xl font-bold uppercase tracking-widest text-[9.5px] items-center gap-2 flex whitespace-nowrap"
+                  >
+                    <i className="fas fa-file-pdf"></i>
+                    Get Profile PDF
+                  </button>
                 </div>
               </div>
               <div className="order-1 lg:order-2 grid grid-cols-1 sm:grid-cols-2 gap-8 lg:gap-12">
