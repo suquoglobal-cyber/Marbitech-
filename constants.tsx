@@ -33,24 +33,6 @@ export const HERO_SLIDES = [
     headline: "Master-Planned Construction Excellence",
     description: "From architectural conceptualization to structural mastery, we deliver developments that define skylines and elevate standards of living.",
     image: "https://lh3.googleusercontent.com/d/1v8hLhaZcAYX_k38j9VoaVFvEXwR0CRdk"
-  },
-  {
-    id: 4,
-    headline: "Immersive Architectural Masterpieces",
-    description: "Experience premium smart living configurations accented with gold-leaf finishes, refined modern spatial layouts, and sophisticated styling.",
-    image: "https://lh3.googleusercontent.com/d/1Mku7SB3ABojuk7Y225v4d_PLZRcLw4TP"
-  },
-  {
-    id: 5,
-    headline: "World-Class Construction Craftsmanship",
-    description: "Our dedicated structural engineers deliver impeccable finishing, robust structural integrity, and exquisite aesthetic perfection.",
-    image: "https://lh3.googleusercontent.com/d/1QAstywyXbPUCFssk0OcV5NaZp_gTn4Ez"
-  },
-  {
-    id: 6,
-    headline: "Bespoke Land & Infrastructural Grandeur",
-    description: "Secure premier structural properties with world-class planning layouts, premium concrete design, and seamless investment appreciation.",
-    image: "https://lh3.googleusercontent.com/d/1v8hLhaZcAYX_k38j9VoaVFvEXwR0CRdk"
   }
 ];
 
