@@ -45,6 +45,12 @@ export const HERO_SLIDES = [
     headline: "World-Class Construction Craftsmanship",
     description: "Our dedicated structural engineers deliver impeccable finishing, robust structural integrity, and exquisite aesthetic perfection.",
     image: "https://storage.googleapis.com/marbitech/Marbitech%20Home%20Page/IMG-20260302-WA0012.jpg"
+  },
+  {
+    id: 6,
+    headline: "Bespoke Land & Infrastructural Grandeur",
+    description: "Secure premier structural properties with world-class planning layouts, premium concrete design, and seamless investment appreciation.",
+    image: "https://storage.googleapis.com/marbitech/Marbitech%20Home%20Page/IMG-20260302-WA0002.jpg"
   }
 ];
 
@@ -68,7 +74,8 @@ export const PROPERTIES: Property[] = [
       'https://storage.googleapis.com/marbitech/Marbitech%20Home%20Page/IMG-20260302-WA0016.jpg',
       'https://storage.googleapis.com/marbitech/Marbitech%20Home%20Page/IMG-20260302-WA0017.jpg',
       'https://storage.googleapis.com/marbitech/Marbitech%20Home%20Page/IMG-20260302-WA0014.jpg',
-      'https://storage.googleapis.com/marbitech/Marbitech%20Home%20Page/IMG-20260302-WA0013.jpg'
+      'https://storage.googleapis.com/marbitech/Marbitech%20Home%20Page/IMG-20260302-WA0013.jpg',
+      'https://storage.googleapis.com/marbitech/Marbitech%20Home%20Page/IMG-20260302-WA0002.jpg'
     ],
     specs: {
       'Ownership Document': 'Certificate of Occupancy (C of O)',
