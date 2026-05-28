@@ -51,12 +51,12 @@ const Navbar: React.FC = () => {
             </div>
             <div className="flex flex-col justify-center">
               <h1 className={`text-gold font-display font-black tracking-wider leading-none transition-all duration-750 ${
-                isScrolled ? 'text-xs sm:text-sm lg:text-base' : 'text-base sm:text-xl lg:text-3xl'
+                isScrolled ? 'text-[11px] sm:text-xs lg:text-sm' : 'text-sm sm:text-lg lg:text-xl'
               }`}>
                 MARBITECH
               </h1>
               <p className={`text-white uppercase tracking-[0.25em] sm:tracking-[0.35em] font-bold opacity-90 mt-0.5 transition-all duration-750 ${
-                isScrolled ? 'text-[4.5px] sm:text-[5px] lg:text-[6px]' : 'text-[5px] sm:text-[7px] lg:text-[8.5px]'
+                isScrolled ? 'text-[4px] sm:text-[4.5px] lg:text-[5.5px]' : 'text-[4.5px] sm:text-[5.5px] lg:text-[7px]'
               }`}>
                 Properties & Investment
               </p>
@@ -108,8 +108,8 @@ const Navbar: React.FC = () => {
             <div className="flex items-center gap-2 sm:gap-3">
               <img src={logoUrl} alt="Logo" referrerPolicy="no-referrer" className="h-12 w-12 sm:h-16 sm:w-16 md:h-20 md:w-20 object-contain filter drop-shadow-[0_0_8px_rgba(202,164,76,0.35)] brightness-110" />
               <div className="flex flex-col">
-                <span className="text-gold font-display font-black text-xl sm:text-2xl md:text-3xl tracking-wider leading-none">MARBITECH</span>
-                <span className="text-[6px] sm:text-[7.5px] md:text-[9.5px] text-white uppercase tracking-[0.25em] sm:tracking-[0.35em] font-bold opacity-90 mt-0.5">Properties & Investment</span>
+                <span className="text-gold font-display font-black text-lg sm:text-xl md:text-2xl tracking-wider leading-none">MARBITECH</span>
+                <span className="text-[5.5px] sm:text-[6.5px] md:text-[8px] text-white uppercase tracking-[0.25em] sm:tracking-[0.35em] font-bold opacity-90 mt-0.5">Properties & Investment</span>
               </div>
             </div>
            <button onClick={() => setIsMenuOpen(false)} className="text-gold h-10 w-10 sm:h-12 sm:w-12 flex items-center justify-center rounded-full bg-white/5 border border-white/10 shrink-0">
