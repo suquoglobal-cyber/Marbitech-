@@ -103,8 +103,7 @@ const Hero: React.FC<HeroProps> = ({ onSearch }) => {
             </div>
           ))}
         </div>
-        <div className="absolute inset-0 z-20 bg-primary/30 backdrop-blur-[1px]"></div>
-        <div className="absolute inset-0 z-20 bg-gradient-to-b from-primary/80 via-transparent to-primary/95"></div>
+        <div className="absolute inset-0 z-20 bg-primary/75 backdrop-blur-[1px]"></div>
       </div>
 
       <div className="container mx-auto relative z-30 pt-32 pb-12 lg:pt-20 lg:pb-0">

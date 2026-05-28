@@ -7,7 +7,6 @@ const Investment: React.FC = () => {
   return (
     <div className="pt-24 lg:pt-36 bg-[#FAF9F6]">
       <section className="bg-primary py-28 lg:py-36 text-white text-center relative overflow-hidden">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,rgba(212,175,55,0.08),transparent_50%)]"></div>
         <div className="container mx-auto px-6 relative z-10">
           <span className="text-gold font-bold uppercase tracking-[0.4em] text-[9px] mb-4 block animate-fade-in">Strategic Portfolio Planning</span>
           <h1 className="text-4xl lg:text-7xl font-display font-medium tracking-tight mb-6 leading-none">

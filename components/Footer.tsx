@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { generateCompanyProfilePDF } from '../services/pdfGenerator';
 
 const Footer: React.FC = () => {
-  const logoUrl = "https://lh3.googleusercontent.com/d/1jn4oChPkYGr1gFcbP781-uHY31kbQ17k";
+  const logoUrl = "https://lh3.googleusercontent.com/d/1bHB6MET9uykqDKBLLB56X_hE9P3MKBKt";
 
   return (
     <footer id="footer" className="bg-primary text-white pt-24 pb-12 border-t border-gold/15 relative overflow-hidden">
@@ -13,9 +13,9 @@ const Footer: React.FC = () => {
           <div className="lg:col-span-5">
             <div className="flex items-center gap-4 mb-8">
               <img src={logoUrl} alt="Marbitech" referrerPolicy="no-referrer" className="h-16 w-16 lg:h-24 lg:w-24 object-contain filter drop-shadow-[0_0_12px_rgba(159,132,88,0.85)] brightness-110" />
-              <div>
-                <h2 className="text-gold font-display text-xl sm:text-2xl lg:text-3xl font-black tracking-wider leading-none mb-1.5">MARBITECH</h2>
-                <p className="text-[8px] sm:text-[9.5px] uppercase tracking-[0.35em] font-bold opacity-95 mt-1.5">Properties & Investment</p>
+              <div className="flex flex-col justify-center">
+                <h2 className="text-gold font-display text-2xl sm:text-3xl lg:text-5xl font-black tracking-wider leading-none">MARBITECH</h2>
+                <p className="text-[8px] sm:text-[9.5px] uppercase tracking-[0.35em] font-bold opacity-95 mt-0.5">Properties & Investment</p>
               </div>
             </div>
           <p className="text-white/55 text-xs sm:text-sm leading-relaxed max-w-lg font-light mb-8">

@@ -11,7 +11,7 @@ import { logAnalyticsEvent } from '../services/firebase';
 const Home: React.FC = () => {
   const navigate = useNavigate();
   
-  const logoUrl = "https://lh3.googleusercontent.com/d/1jn4oChPkYGr1gFcbP781-uHY31kbQ17k";
+  const logoUrl = "https://lh3.googleusercontent.com/d/1bHB6MET9uykqDKBLLB56X_hE9P3MKBKt";
 
   // Showcase only the top 3 curated premier properties on the homepage
   const featuredProperties = PROPERTIES.slice(0, 3);
@@ -88,15 +88,6 @@ const Home: React.FC = () => {
       {/* Investment Calculator Showcase */}
       <div className="relative">
         <InvestmentCalculator />
-        <div className="bg-primary pb-28 text-center border-b border-gold/15">
-          <button 
-            onClick={() => navigate('/investment')}
-            className="gold-button inline-flex items-center gap-3 px-14 py-5 rounded-full font-bold uppercase tracking-widest text-[10px] bg-gold shadow-lg"
-          >
-            Launch Portfolio Planner & AI Consult
-            <i className="fas fa-brain text-[11px] ml-1"></i>
-          </button>
-        </div>
       </div>
 
       {/* Legacy and Values Section */}
@@ -147,7 +138,6 @@ const Home: React.FC = () => {
                       "Creating world-class real estate opportunities anchored in integrity and client success."
                     </p>
                   </div>
-                  <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_right,rgba(212,175,55,0.1),transparent_70%)] pointer-events-none"></div>
                 </div>
               </div>
             </div>

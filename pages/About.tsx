@@ -59,7 +59,6 @@ const About: React.FC = () => {
                        "Creating world-class real estate opportunities anchored in integrity, client success, and sustainable development."
                     </p>
                   </div>
-                  <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_right,rgba(212,175,55,0.1),transparent_70%)] pointer-events-none"></div>
                 </div>
               </div>
             </div>

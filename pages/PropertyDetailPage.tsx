@@ -443,7 +443,6 @@ const PropertyDetailPage: React.FC = () => {
             
             {/* Top Stats Card */}
             <div className="bg-primary text-white rounded-[2rem] p-8 lg:p-10 border border-gold/20 shadow-2xl relative overflow-hidden">
-              <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(212,175,55,0.08),transparent_40%)]"></div>
               
               <div className="relative z-10">
                 <span className="text-gold font-bold uppercase tracking-[0.3em] text-[8.5px] block mb-4">Official Asset Valuation</span>
