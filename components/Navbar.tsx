@@ -37,26 +37,26 @@ const Navbar: React.FC = () => {
         <div className="container mx-auto flex justify-between items-center">
           <Link 
             to="/"
-            className="flex items-center gap-3 cursor-pointer group" 
+            className="flex items-center gap-2 sm:gap-3 cursor-pointer group" 
           >
-            <div className={`relative transition-all duration-750 flex items-center justify-center p-1 ${
-              isScrolled ? 'h-11 w-11 lg:h-12 lg:w-12' : 'h-16 w-16 lg:h-20 lg:w-20'
+            <div className={`relative transition-all duration-750 flex items-center justify-center p-0.5 sm:p-1 ${
+              isScrolled ? 'h-9 w-9 sm:h-11 sm:w-11 lg:h-12 lg:w-12' : 'h-11 w-11 sm:h-16 sm:w-16 lg:h-20 lg:w-20'
             }`}>
               <img 
                 src={logoUrl} 
                 alt="Marbitech Logo" 
                 referrerPolicy="no-referrer"
-                className="w-full h-full object-contain transform group-hover:rotate-12 group-hover:scale-105 transition-all duration-700 filter drop-shadow-[0_0_12px_rgba(202,164,76,0.85)] brightness-110"
+                className="w-full h-full object-contain transform group-hover:rotate-12 group-hover:scale-105 transition-all duration-700 filter drop-shadow-[0_0_8px_rgba(202,164,76,0.35)] brightness-110"
               />
             </div>
             <div className="flex flex-col justify-center">
               <h1 className={`text-gold font-display font-black tracking-wider leading-none transition-all duration-750 ${
-                isScrolled ? 'text-sm sm:text-base' : 'text-lg sm:text-xl lg:text-3xl'
+                isScrolled ? 'text-xs sm:text-sm lg:text-base' : 'text-base sm:text-xl lg:text-3xl'
               }`}>
                 MARBITECH
               </h1>
-              <p className={`text-white uppercase tracking-[0.35em] font-bold opacity-90 mt-0.5 transition-all duration-750 ${
-                isScrolled ? 'text-[5px] sm:text-[6px]' : 'text-[6px] sm:text-[7px] lg:text-[8.5px]'
+              <p className={`text-white uppercase tracking-[0.25em] sm:tracking-[0.35em] font-bold opacity-90 mt-0.5 transition-all duration-750 ${
+                isScrolled ? 'text-[4.5px] sm:text-[5px] lg:text-[6px]' : 'text-[5px] sm:text-[7px] lg:text-[8.5px]'
               }`}>
                 Properties & Investment
               </p>
@@ -104,16 +104,16 @@ const Navbar: React.FC = () => {
       <div className={`fixed inset-0 z-[60] bg-primary transition-all duration-700 lg:hidden flex flex-col ${
         isMenuOpen ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-full pointer-events-none'
       }`}>
-        <div className="flex justify-between items-center p-8 border-b border-white/5">
-            <div className="flex items-center gap-3">
-              <img src={logoUrl} alt="Logo" referrerPolicy="no-referrer" className="h-20 w-20 object-contain filter drop-shadow-[0_0_12px_rgba(202,164,76,0.85)] brightness-110" />
+        <div className="flex justify-between items-center p-4 sm:p-6 md:p-8 border-b border-white/5">
+            <div className="flex items-center gap-2 sm:gap-3">
+              <img src={logoUrl} alt="Logo" referrerPolicy="no-referrer" className="h-12 w-12 sm:h-16 sm:w-16 md:h-20 md:w-20 object-contain filter drop-shadow-[0_0_8px_rgba(202,164,76,0.35)] brightness-110" />
               <div className="flex flex-col">
-                <span className="text-gold font-display font-black text-2xl sm:text-3xl tracking-wider leading-none">MARBITECH</span>
-                <span className="text-[7.5px] sm:text-[9.5px] text-white uppercase tracking-[0.35em] font-bold opacity-90 mt-0.5">Properties & Investment</span>
+                <span className="text-gold font-display font-black text-xl sm:text-2xl md:text-3xl tracking-wider leading-none">MARBITECH</span>
+                <span className="text-[6px] sm:text-[7.5px] md:text-[9.5px] text-white uppercase tracking-[0.25em] sm:tracking-[0.35em] font-bold opacity-90 mt-0.5">Properties & Investment</span>
               </div>
             </div>
-           <button onClick={() => setIsMenuOpen(false)} className="text-gold h-12 w-12 flex items-center justify-center rounded-full bg-white/5">
-             <i className="fas fa-times text-2xl"></i>
+           <button onClick={() => setIsMenuOpen(false)} className="text-gold h-10 w-10 sm:h-12 sm:w-12 flex items-center justify-center rounded-full bg-white/5 border border-white/10 shrink-0">
+             <i className="fas fa-times text-lg sm:text-2xl"></i>
            </button>
         </div>
         <div className="flex-1 flex flex-col items-center justify-center space-y-10 px-10">

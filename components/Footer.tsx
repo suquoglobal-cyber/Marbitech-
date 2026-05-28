@@ -11,11 +11,11 @@ const Footer: React.FC = () => {
       <div className="container mx-auto px-6 lg:px-20 relative z-10">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-12 mb-20 lg:mb-32">
           <div className="lg:col-span-5">
-            <div className="flex items-center gap-4 mb-8">
-              <img src={logoUrl} alt="Marbitech" referrerPolicy="no-referrer" className="h-16 w-16 lg:h-24 lg:w-24 object-contain filter drop-shadow-[0_0_12px_rgba(202,164,76,0.85)] brightness-110" />
+            <div className="flex items-center gap-3 sm:gap-4 mb-8">
+              <img src={logoUrl} alt="Marbitech" referrerPolicy="no-referrer" className="h-12 w-12 sm:h-16 lg:h-20 object-contain filter drop-shadow-[0_0_8px_rgba(202,164,76,0.35)] brightness-110" />
               <div className="flex flex-col justify-center">
-                <h2 className="text-gold font-display text-2xl sm:text-3xl lg:text-5xl font-black tracking-wider leading-none">MARBITECH</h2>
-                <p className="text-[8px] sm:text-[9.5px] uppercase tracking-[0.35em] font-bold opacity-95 mt-0.5">Properties & Investment</p>
+                <h2 className="text-gold font-display text-xl sm:text-3xl lg:text-4xl font-black tracking-wider leading-none py-1">MARBITECH</h2>
+                <p className="text-[6.5px] sm:text-[8px] lg:text-[9.5px] uppercase tracking-[0.25em] sm:tracking-[0.35em] font-bold opacity-90">Properties & Investment</p>
               </div>
             </div>
           <p className="text-white/55 text-xs sm:text-sm leading-relaxed max-w-lg font-light mb-8">
