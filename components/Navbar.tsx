@@ -46,7 +46,7 @@ const Navbar: React.FC = () => {
                 src={logoUrl} 
                 alt="Marbitech Logo" 
                 referrerPolicy="no-referrer"
-                className="w-full h-full object-contain transform group-hover:rotate-12 group-hover:scale-105 transition-all duration-700 filter drop-shadow-[0_0_12px_rgba(159,132,88,0.85)] brightness-110"
+                className="w-full h-full object-contain transform group-hover:rotate-12 group-hover:scale-105 transition-all duration-700 filter drop-shadow-[0_0_12px_rgba(202,164,76,0.85)] brightness-110"
               />
             </div>
             <div className="flex flex-col justify-center">
@@ -83,7 +83,7 @@ const Navbar: React.FC = () => {
                   if (input) input.focus();
                 }, 500);
               }}
-              className="px-8 py-3 bg-gold text-primary rounded-full text-[10px] font-bold uppercase tracking-[0.2em] transform hover:-translate-y-0.5 hover:shadow-[0_8px_20px_rgba(159,132,88,0.3)] transition-all duration-500"
+              className="px-8 py-3 bg-gold text-primary rounded-full text-[10px] font-bold uppercase tracking-[0.2em] transform hover:-translate-y-0.5 hover:shadow-[0_8px_20px_rgba(202,164,76,0.3)] transition-all duration-500"
             >
               Consult Now
             </button>
@@ -106,7 +106,7 @@ const Navbar: React.FC = () => {
       }`}>
         <div className="flex justify-between items-center p-8 border-b border-white/5">
             <div className="flex items-center gap-3">
-              <img src={logoUrl} alt="Logo" referrerPolicy="no-referrer" className="h-20 w-20 object-contain filter drop-shadow-[0_0_12px_rgba(159,132,88,0.85)] brightness-110" />
+              <img src={logoUrl} alt="Logo" referrerPolicy="no-referrer" className="h-20 w-20 object-contain filter drop-shadow-[0_0_12px_rgba(202,164,76,0.85)] brightness-110" />
               <div className="flex flex-col">
                 <span className="text-gold font-display font-black text-2xl sm:text-3xl tracking-wider leading-none">MARBITECH</span>
                 <span className="text-[7.5px] sm:text-[9.5px] text-white uppercase tracking-[0.35em] font-bold opacity-90 mt-0.5">Properties & Investment</span>

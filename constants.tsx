@@ -3,9 +3,9 @@ import { Property } from './types';
 
 export const COLORS = {
   PRIMARY: '#001D00',
-  GOLD: '#9F8458',
-  GOLD_LIGHT: '#CAA44C',
-  GOLD_DARK: '#6D5837',
+  GOLD: '#CAA44C',
+  GOLD_LIGHT: '#F8E9C4',
+  GOLD_DARK: '#9F8458',
   DARK_GREEN: '#001400',
 };
 
